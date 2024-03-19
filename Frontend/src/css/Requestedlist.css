@@ -8,6 +8,9 @@
   background-color:#1F2739;
 }  */
 
+
+
+
 .request_header {
   font-size:3em; 
   font-weight: 300;
@@ -80,7 +83,7 @@ h2 a {
 	  background-color: #1F2739;
 }
 
-.request_user td:first-child { color: #FB667A; } */
+.request_user td:first-child { color: #FB667A; }
 
 .request_user tr:hover {
    background-color: #464A52;
@@ -106,4 +109,4 @@ h2 a {
 @media (max-width: 800px) {
 .request_user td:nth-child(4),
 .request_user th:nth-child(4) { display: none; }
-}   
+}    

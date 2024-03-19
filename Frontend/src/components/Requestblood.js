@@ -2,22 +2,23 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import '../css/Requestblood.css';
 import Navbar from './Navbar';
-import { Navigate, useNavigate } from 'react-router-dom';
+import {  useNavigate } from 'react-router-dom';
 
  function Requestblood() {
 
         const [values, setValues] = useState({
           name: '',
           age: '',
+          bloodgroup: '',
           gender: '',
           phone: '',
           address:'',
-          bloodgroup: '',
           unit: '',
-          hospital:'',
+        
         
         });
-const navigate=useNavigate();
+const Navigate=useNavigate();
+
         const handleSubmit = (e) => {
             e.preventDefault();
             axios
@@ -25,7 +26,7 @@ const navigate=useNavigate();
               .then((res) => {
                 console.log(res);
                 alert('requested successfully');
-            navigate('/Home')
+            Navigate('/Home')
               })
               .catch((err) => console.log(err));
           };
@@ -45,6 +46,9 @@ const navigate=useNavigate();
     <label for="lname">Age</label>
     <input  className='Request_form'  type="text" id="name" name="age"  onChange={(e) => setValues({ ...values, age: e.target.value })} placeholder="Your age..."/>
 
+    <label for="lname">Blood group</label>
+    <input  className='Request_form'  type="text" id="name" name="group"   onChange={(e) => setValues({ ...values, group: e.target.value })}  placeholder="Your age..."/>
+
     <label for="lname">Gender</label>
     <input  className='Request_form'  type="text" id="name" name="gender"  onChange={(e) => setValues({ ...values, gender: e.target.value })} placeholder=""/>
 
@@ -54,14 +58,10 @@ const navigate=useNavigate();
     <label for="lname">Adress</label>
     <input  className='Request_form'  type="text" id="name" name="address"  onChange={(e) => setValues({ ...values, address: e.target.value })} placeholder="Your age..."/>
 
-    <label for="lname">Blood group</label>
-    <input  className='Request_form'  type="text" id="name" name="group"   onChange={(e) => setValues({ ...values, group: e.target.value })}  placeholder="Your age..."/>
+   
 
     <label for="lname">Blood unit</label>
     <input  className='Request_form'  type="text" id="name" name="unit"  onChange={(e) => setValues({ ...values, unit: e.target.value })} placeholder="enter blood unit...."/>
-
-    <label for="lname">Patient hospital</label>
-    <input  className='Request_form'  type="text" id="name" name="hospital"  onChange={(e) => setValues({ ...values, hospital: e.target.value })} placeholder="enter your hospital"/>
 
     <button className='Request_button' type='submit'>submit</button>
   </form>

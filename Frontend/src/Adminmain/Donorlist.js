@@ -11,7 +11,7 @@ function Donorlist() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:8080/donateblood');
+        const response = await axios.get('http://localhost:8080/donatelist');
         console.log(response.data);
         setDonors(response.data);
       } catch (error) {
@@ -61,7 +61,8 @@ function Donorlist() {
       name: 'City',
       selector: row => row.donor_address,
       sortable: true
-    }
+    },
+   
   ];
 
   return (
@@ -101,6 +102,116 @@ export default Donorlist;
 
 
 
+
+
+
+
+
+
+// copy
+
+// import React, { useEffect, useState } from 'react';
+// import axios from 'axios';
+// import DataTable from 'react-data-table-component';
+// import '../css/Donorlist.css';
+
+// function Donorlist() {
+//   const [donors, setDonors] = useState([]);
+//   const [search, setSearch] = useState('');
+
+//   useEffect(() => {
+//     const fetchData = async () => {
+//       try {
+//         const response = await axios.get('http://localhost:8080/donateblood');
+//         console.log(response.data);
+//         setDonors(response.data);
+//       } catch (error) {
+//         console.error('Error fetching data:', error.message);
+//       }
+//     };
+
+//     fetchData();
+//   }, []);
+
+//   const filteredDonors = donors.filter(donor =>
+//     donor.donor_name.toLowerCase().includes(search.toLowerCase())
+//   );
+
+//   const columns = [
+//     {
+//       name: 'ID',
+//       selector: row => row.donor_id,
+//       sortable: true
+//     },
+//     {
+//       name: 'Name',
+//       selector: row => row.donor_name,
+//       sortable: true
+//     },
+//     {
+//       name: 'Age',
+//       selector: row => row.donor_age,
+//       sortable: true
+//     },
+//     {
+//       name: 'Blood Group',
+//       selector: row => row.donor_group,
+//       sortable: true
+//     },
+//     {
+//       name: 'Gender',
+//       selector: row => row.donor_gender,
+//       sortable: true
+//     },
+//     {
+//       name: 'Phone',
+//       selector: row => row.donor_phone,
+//       sortable: true
+//     },
+//     {
+//       name: 'City',
+//       selector: row => row.donor_address,
+//       sortable: true
+//     }
+//   ];
+
+//   return (
+//     <>
+//       <div className="container_donor">
+//         <h1>Donor List</h1>
+
+//         <div className="donor-list-container">
+//           <div className="search-container">
+//             <input
+//             className='donor_search'
+//               type="text"
+//               placeholder="Search donors by name"
+//               value={search}
+//               onChange={e => setSearch(e.target.value)}
+//             />
+//           </div>
+
+//           <div className='donor-list'>
+//             <h2>Donor Details</h2>
+
+//             <DataTable
+//               columns={columns}
+//               data={filteredDonors}
+//               pagination
+//               defaultSortField="donor_id"
+//               defaultSortAsc={true}
+//             />
+//           </div>
+//         </div>
+//       </div>
+//     </>
+//   );
+// }
+
+// export default Donorlist;
+
+
+// 1st one
 
 // import React, { useEffect, useState, useRef } from 'react';
 // import axios from 'axios';
