@@ -180,8 +180,7 @@ app.delete('/delete/:id',(req,res)=>{
 
 // })
 
-
-//patient
+// patient request
 
 app.get('/requestblood',(req,res)=>{
     const sql="SELECT *FROM patient";
@@ -203,7 +202,8 @@ app.post('/requestblood', (req, res) => {
         req.body.unit
     ];
 
-    const patientSql = "INSERT INTO patient (`patient_name`, `patient_age`,`patient_group`, `patient_gender`, `patient_phone`, `patient_address`, `patient_unit`) VALUES (?)";
+    const patientSql = "INSERT INTO patient (`patient_name`, `patient_age`, `patient_group`, `patient_gender`, `patient_phone`, `patient_address`, `patient_unit`, `status`) VALUES (?, ?, ?, ?, ?, ?, ?, 'pending')";
+
 
     db.query(patientSql, [patientValues], (err, result) => {
         if (err) {
@@ -228,6 +228,71 @@ app.post('/requestblood', (req, res) => {
         });
     });
 });
+
+
+
+app.put('/approve/:id', (req, res) => {
+    const patientId = req.params.id;
+    const updateSql = "UPDATE patient SET status = 'approved' WHERE patient_id = ?";
+    db.query(updateSql, [patientId], (err, result) => {
+        if (err) {
+            return res.json({ Message: "Error in server" });
+        }
+        return res.json({ Message: "Request approved successfully" });
+    });
+});
+
+
+
+//patient
+
+// app.get('/requestblood',(req,res)=>{
+//     const sql="SELECT *FROM patient";
+//     db.query(sql, (err,result)=>{
+//         if(err) return res.json({Message:"error in server"});
+//         return res.json(result);
+
+//     })
+// })
+
+// app.post('/requestblood', (req, res) => {
+//     const patientValues = [
+//         req.body.name,
+//         req.body.age,
+//         req.body.group,
+//         req.body.gender,
+//         req.body.phone,
+//         req.body.address,
+//         req.body.unit
+//     ];
+
+//     const patientSql = "INSERT INTO patient (`patient_name`, `patient_age`,`patient_group`, `patient_gender`, `patient_phone`, `patient_address`, `patient_unit`) VALUES (?)";
+
+//     db.query(patientSql, [patientValues], (err, result) => {
+//         if (err) {
+//             return res.json(err);
+//         }
+
+//         const p_id = result.insertId; // Get the auto-generated p_id from the patient insertion
+
+//         const bloodValues = [
+//             req.body.group,
+//             req.body.unit,
+//             p_id
+//         ];
+
+//         const bloodSql = "INSERT INTO blood (`bloodgroup`, `units`, `patient_id`) VALUES (?)";
+
+//         db.query(bloodSql, [bloodValues], (err, result) => {
+//             if (err) {
+//                 return res.json(err);
+//             }
+//             return res.json(result);
+//         });
+//     });
+// });
+
+
 
 
 
