@@ -12,6 +12,7 @@ function AdminDashboard() {
     const [bloodBankData, setBloodBankData] = useState(null);
     const [requests, setRequests] = useState([]);
     const [approvedRequests, setApprovedRequests] = useState([]);
+    const [hasData, setHasData] = useState([]);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -19,6 +20,9 @@ function AdminDashboard() {
                 const response = await axios.get('http://localhost:8080/requestblood');
                 console.log(response.data);
                 setRequests(response.data);
+
+                const hasResponse = await axios.get('http://localhost:8080/has');
+                setHasData(hasResponse.data);
             } catch (error) {
                 console.error('Error fetching data:', error.message);
             }
@@ -32,6 +36,7 @@ function AdminDashboard() {
         }
     }, [location.state]);
 
+// approve
 
     const handleApprove = (id) => {
       axios.put(`http://localhost:8080/approve/${id}`)
@@ -53,6 +58,15 @@ function AdminDashboard() {
           .catch((err) => console.log(err));
   };
   
+  const handleDelete = (id)=>{
+            axios.delete('http://localhost:8080/delete/'+id)
+            .then(res =>{
+                // location.reload();
+            })
+            .catch(err=> console.log(err));
+         }
+
+
 
     return (
         <>
@@ -84,6 +98,7 @@ function AdminDashboard() {
                                 <th>Patient Units</th>
                                 <th>Status</th>
                                 <th>Action</th>
+                             
                             </tr>
                         </thead>
                         <tbody>
@@ -98,23 +113,56 @@ function AdminDashboard() {
                                     <td>{patient.patient_address}</td>
                                     <td>{patient.patient_unit}</td>
                                     <td>{patient.status}</td>
+                                  
                                     <td>
-                                    <td>
-    <button 
+        <button 
         onClick={() => handleApprove(patient.patient_id)} 
         disabled={patient.status === 'approved' || approvedRequests.includes(patient.patient_id)}
-    >
-        {patient.status === 'pending' ? 'Approve' : 'Approved'}
-    </button>
-</td>
-
-                                    </td>
+        >
+          {patient.status === 'pending' ? 'Approve' : 'Approved'}
+       </button>
+      </td>                       
                                 </tr>
                             ))}
                         </tbody>
                     </Table>
                 </div>
             </div>
+
+
+            <div className="user-list-container">
+                <h1>Has Table</h1>
+                <Table responsive id="customers">
+                    <thead>
+                        <tr>
+                            <th>Blood Bank ID</th>
+                            <th>Blood Group ID</th>
+                            <th>Units</th>
+                            <th>Blood Group</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {hasData.map((item, index) => (
+                            <tr key={index}>
+                                <td>{item.bloodbank_id}</td>
+                                <td>{item.bloodgroup_id}</td>
+                                <td>{item.units}</td>
+                                <td>{item.bloodgroup}</td>
+                                <td>
+                      
+                                <Link to={`/edit/${item.bloodbank_id}`}>
+                        <button className='user_edit_button'>Edit</button>
+                      </Link>
+                                <button   onClick={() => handleDelete(item.bloodbank_id)} className='user_delete_button'>Delete</button>
+                    </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </Table>
+            </div>
+
+
         </>
     );
 }

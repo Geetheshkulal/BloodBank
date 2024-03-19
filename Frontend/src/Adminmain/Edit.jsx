@@ -16,7 +16,7 @@ function Edit() {
         axios.get('http://localhost:8080/read/'+id)
         .then(res =>{
             console.log(res)
-            setValues({...values, name: res.data[0].user_name, gender: res.data[0].user_gender, age: res.data[0].user_age, bloodgroup: res.data[0].user_group, address: res.data[0].user_address, phone: res.data[0].user_phone})
+            setValues({...values, bloodbank_id: res.data[0].bloodbank_id, bloodgroup_id: res.data[0].bloodgroup_id, units: res.data[0].units, bloodgroup: res.data[0].bloodgroup})
 
         })
            .catch(err=> console.log(err))
@@ -24,12 +24,10 @@ function Edit() {
 
 
     const [values, setValues]=useState({
-      name:'',
-      gender:'',
-      age:'',
+      bloodbank_id:'',
+      bloodgroup_id:'',
+      units:'',
       bloodgroup:'',
-      address:'',
-      phone:'',
 
   })
 
@@ -58,26 +56,26 @@ function Edit() {
     <form >
          <div class='mb-3 row'>
   
-        <label class="col-sm-1">Username</label>
+        <label class="col-sm-1">blood bank id</label>
         <div className="col-sm-5">
-          <input type="text" name="name" className="form-control"  value={values.name}  onChange={e=>setValues({...values,name: e.target.value})}/>
+          <input type="text" name="bloodbank_id" className="form-control"  value={values.bloodbank_id}  onChange={e=>setValues({...values,bloodbank_id: e.target.value})}/>
         </div>
         </div>
      
 
         <div class='mb-3 row'>
-        <label className="col-sm-1">Gender</label>
+        <label className="col-sm-1">blood group id</label>
         <div className="col-sm-5">
-          <input type="text" name="gender" className="form-control"  value={values.gender}  onChange={e=>setValues({...values,gender: e.target.value})} />
+          <input type="text" name="bloodgroup_id" className="form-control"  value={values.bloodgroup_id}  onChange={e=>setValues({...values,bloodgroup_id: e.target.value})} />
         </div>
         </div>
 
         
         
         <div class='mb-3 row'>
-        <label className="col-sm-1">Age</label>
+        <label className="col-sm-1">units</label>
         <div className="col-sm-5">
-          <input type="text" name="age" className="form-control"  value={values.age}  onChange={e=>setValues({...values,age: e.target.value})} />
+          <input type="text" name="units" className="form-control"  value={values.units}  onChange={e=>setValues({...values,units: e.target.value})} />
         </div>
         </div>
  
@@ -91,21 +89,7 @@ function Edit() {
           </div>
 
        
-          <div class='mb-3 row'>
-        <label className="col-sm-1">Address</label>
-        <div className="col-sm-5">
-          <input type="text" name="address" className="form-control"   value={values.address }  onChange={e=>setValues({...values,address: e.target.value})} />
-        </div>
-        </div>
-    
-
-        
-        <div class='mb-3 row'>
-        <label className="col-sm-1">Phone</label>
-        <div className="col-sm-5">
-          <input type="text" name="phone" className="form-control"  value={values.phone}  onChange={e=>setValues({...values,phone: e.target.value})} />
-        </div>
-        </div>
+  
       
         <div className="c-button">
         <Button variant="secondary"  className='Dsubmit'  onClick={handleClose}>Close </Button>

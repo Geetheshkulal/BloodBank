@@ -34,7 +34,7 @@ const Requestedlist = () => {
             <th>Patient Phone</th>
             <th>Patient Address</th>
             <th>Patient units</th>
-            <th>Actions</th>
+         
           </tr>
         </thead>
         <tbody>
@@ -50,6 +50,7 @@ const Requestedlist = () => {
               <td>{Patient.patient_unit}</td>
             </tr>
           ))}
+          
         </tbody>
       </Table>
     </div>

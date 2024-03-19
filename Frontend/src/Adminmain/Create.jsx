@@ -7,11 +7,13 @@ import '../css/Create.css';
 function Create() {
   const [values, setValues] = useState({
     name: '',
-    gender: '',
     age: '',
     bloodgroup: '',
-    address: '',
+    gender: '',
     phone: '',
+    address: '',
+    unit: '',
+
   });
 
   const navigate = useNavigate();
@@ -19,91 +21,120 @@ function Create() {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post('http://localhost:8080/donation', values)
+      .post('http://localhost:8080/adminCreate', values)
       .then((res) => {
         console.log(res);
-      navigate('/AdminDashboard')
+        navigate('/AdminDashboard')
       })
       .catch((err) => console.log(err));
   };
+  
 
   return (
     <div className="background">
       <div className='create-box'>
       <div className="container_box">
+
       <form onSubmit={handleSubmit}>
         <div className="mb-3 row">
-          <label className="col-sm-2">Username</label>
+          <label className="col-sm-2">patient Name</label>
           <div className="col-sm-10">
-            <input
-              type="text"
-              name="name"
-              className="form-control"
-              onChange={(e) => setValues({ ...values, name: e.target.value })}
-            />
+          <input
+                            className='Request_form'
+                            type='text'
+                            id='fname'
+                            name='name'
+                            onChange={(e) => setValues({ ...values, name: e.target.value })}
+                            placeholder='Your name..'
+                        />
+          </div>
+        </div>
+
+        <div className="mb-3 row">
+          <label className="col-sm-2">patient age</label>
+          <div className="col-sm-10">
+          <input
+                            className='Request_form'
+                            type='text'
+                            id='name'
+                            name='age'
+                            onChange={(e) => setValues({ ...values, age: e.target.value })}
+                            placeholder='Your age...'
+                        />
+
+          </div>
+        </div>
+
+        <div className="mb-3 row">
+          <label className="col-sm-2">Blood group</label>
+          <div className="col-sm-10">
+          <input
+                            className='Request_form'
+                            type='text'
+                            id='name'
+                            name='group'
+                            onChange={(e) => setValues({ ...values, group: e.target.value })}
+                            placeholder='Your blood group...'
+                        />
           </div>
         </div>
 
         <div className="mb-3 row">
           <label className="col-sm-2">Gender</label>
           <div className="col-sm-10">
-            <input
-              type="text"
-              name="gender"
-              className="form-control"
-              onChange={(e) => setValues({ ...values, gender: e.target.value })}
-            />
+          <input
+                            className='Request_form'
+                            type='text'
+                            id='name'
+                            name='gender'
+                            onChange={(e) => setValues({ ...values, gender: e.target.value })}
+                            placeholder='Your gender...'
+                        />
           </div>
         </div>
 
         <div className="mb-3 row">
-          <label className="col-sm-2">Age</label>
+          <label className="col-sm-2">phone</label>
           <div className="col-sm-10">
-            <input
-              type="text"
-              name="age"
-              className="form-control"
-              onChange={(e) => setValues({ ...values, age: e.target.value })}
-            />
+          <input
+                            className='Request_form'
+                            type='text'
+                            id='name'
+                            name='phone'
+                            onChange={(e) => setValues({ ...values, phone: e.target.value })}
+                            placeholder='Your phone...'
+                        />
           </div>
         </div>
 
         <div className="mb-3 row">
-          <label className="col-sm-2">Blood Group</label>
+          <label className="col-sm-2">address</label>
           <div className="col-sm-10">
-            <input
-              type="text"
-              name="bloodgroup"
-              className="form-control"
-              onChange={(e) => setValues({ ...values, bloodgroup: e.target.value })}
-            />
+          <input
+                            className='Request_form'
+                            type='text'
+                            id='name'
+                            name='address'
+                            onChange={(e) => setValues({ ...values, address: e.target.value })}
+                            placeholder='Your address...'
+                        />
+
           </div>
         </div>
 
         <div className="mb-3 row">
-          <label className="col-sm-2">Address</label>
+          <label className="col-sm-2">blood unit</label>
           <div className="col-sm-10">
-            <input
-              type="text"
-              name="address"
-              className="form-control"
-              onChange={(e) => setValues({ ...values, address: e.target.value })}
-            />
+          <input
+                            className='Request_form'
+                            type='text'
+                            id='name'
+                            name='unit'
+                            onChange={(e) => setValues({ ...values, unit: e.target.value })}
+                            placeholder='Enter blood unit...'
+                        />
           </div>
         </div>
-
-        <div className="mb-3 row">
-          <label className="col-sm-2">Phone</label>
-          <div className="col-sm-10">
-            <input
-              type="text"
-              name="phone"
-              className="form-control"
-              onChange={(e) => setValues({ ...values, phone: e.target.value })}
-            />
-          </div>
-        </div>
-          
             <div >
                 <button className='Dsubmit' type="submit">Add User</button>
             
