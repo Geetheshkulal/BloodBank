@@ -1,4 +1,14 @@
 
+.page{
+background-color:#F9E8C9;
+}
+
+.admin-header{
+  padding-top: 20px;
+  padding-bottom: 22px;
+  font-weight:700;
+  color:#f44336;
+}
    .user-list-container{
   
     margin-left: 20%;
@@ -22,7 +32,7 @@
   #customers tr:hover {background-color: #ddd;}
   
   #customers th {
-    padding-top: 12px;
+    padding-top: 10px;
     padding-bottom: 12px;
     text-align: left;
     background-color: #04AA6D;
@@ -66,3 +76,47 @@
  /* .user-list h2{
   font-size: 30px;
  } */
+
+
+ .request_header{
+  padding-top: 14px;
+  padding-bottom: 22px;
+  color: black;
+  font-size: 200;
+  width: auto;
+  margin-right: 20%;
+ }
+
+ 
+ .has_header{
+  padding-top: 14px;
+  padding-bottom: 22px;
+  color: black;
+  font-size: 200;
+  width: auto;
+  margin-right: 20%;
+ }
+
+
+.button-7 {
+  background-color: #0095ff;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  box-shadow: rgba(255, 255, 255, .4) 0 1px 0 0 inset;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system,system-ui,"Segoe UI","Liberation Sans",sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  margin: 0;
+  outline: none;
+  padding: 8px .8em;
+  position: relative;
+  text-align: center;
+ 
+}
+
+.button-7:hover{
+  background-color: #07c;
+}

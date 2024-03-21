@@ -69,12 +69,12 @@ function AdminDashboard() {
 
 
     return (
-        <>
+        < div className='page'>
             <div className="container">
                 <Sidebar />
                 {adminData && bloodBankData && (
                     <div>
-                        <h2>Welcome, {adminData.admin_email}</h2>
+                        <h2 className='admin-header'>Welcome, {adminData.admin_email}</h2>
                         <p>Blood Bank Details:</p>
                         <p>ID: {bloodBankData.bloodbank_id}</p>
                         <p>Blood Bank Name: {bloodBankData.bloodbank_name}</p>
@@ -115,8 +115,7 @@ function AdminDashboard() {
                                     <td>{patient.status}</td>
                                   
                                     <td>
-        <button 
-        onClick={() => handleApprove(patient.patient_id)} 
+        <button   class="button-7" role="button" onClick={() => handleApprove(patient.patient_id)} 
         disabled={patient.status === 'approved' || approvedRequests.includes(patient.patient_id)}
         >
           {patient.status === 'pending' ? 'Approve' : 'Approved'}
@@ -131,7 +130,7 @@ function AdminDashboard() {
 
 
             <div className="user-list-container">
-                <h1>Has Table</h1>
+                <h1  className="has_header">Has Table</h1>
                 <Table responsive id="customers">
                     <thead>
                         <tr>
@@ -163,7 +162,7 @@ function AdminDashboard() {
             </div>
 
 
-        </>
+        </div>
     );
 }
 
