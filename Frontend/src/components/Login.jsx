@@ -26,7 +26,7 @@ const handleSubmit=(event)=>{
   axios.post('http://localhost:8080/Login',values)
 .then(res=>{
   if(res.data==='success'){
-    alert("login success");
+    alert("login success")
     navigate('/Home');
   }
 else{
@@ -94,14 +94,12 @@ alert("not exists");
             </form>
           </div>
         </div>
+
+
+
       );
     };
     
     
 
 export default Login;
-
-
-
-
-

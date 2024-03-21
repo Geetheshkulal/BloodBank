@@ -84,7 +84,7 @@ width:100%;
   box-sizing: border-box;
 }
 
-.requestform_blood button {
+.requestform_blood button{
   background-color: #724caf;
   color: white;
   padding: 10px 20px;
@@ -100,4 +100,34 @@ width:100%;
 .Request_button {
   display: block;
   margin-top: 10px;
+}
+
+.no-button {
+  display: block;
+  margin-top: 10px;
+}
+.submitted-details {
+  margin-top: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.submitted-details h3 {
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.submitted-details ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.submitted-details ul li {
+  margin-bottom: 5px;
+}
+
+.submitted-details ul li:last-child {
+  margin-bottom: 0;
 }

@@ -17,6 +17,7 @@ function Navbar({ userEmail}){
                     <li><Link to='/Service'>SERVICES</Link></li>
                     <li><Link to='/Requestblood'>REQUEST BLOOD</Link></li>
                     <li><Link to='/Contact'>CONTACT</Link></li>
+                    <li><Link to='/'>LOG OUT</Link></li>
                     
                  
                     </div>

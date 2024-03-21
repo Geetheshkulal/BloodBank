@@ -42,6 +42,26 @@ app.post('/Signup',(req,res)=>{
     })
 })
 
+//login
+
+app.post('/Login',(req,res)=>{
+    const sql = "SELECT * FROM signup WHERE `user_email`= ? AND `user_password`= ?";
+    
+    db.query(sql,[req.body.user_email,req.body.user_password],(err,data)=>{
+        if(err){
+            console.error("Error executing SQL query:", err);
+            return res.json("error");
+        }
+        if(data.length>0){
+            return res.json("success");
+        }
+        else{
+            return res.json("fail");
+        }
+    })
+    })
+
+
 // admin dashboard
 app.get('/admindashboard',(req,res)=>{
     const sql="SELECT *FROM patient";
@@ -100,6 +120,23 @@ app.post('/requestblood', (req, res) => {
         });
     });
 });
+
+
+app.get('/patient/:id', (req, res) => {
+    const patientId = req.params.id;
+    const sql = "SELECT * FROM patient WHERE patient_id = ?";
+    db.query(sql, [patientId], (err, result) => {
+        if (err) {
+            return res.json({ error: err.message });
+        }
+        if (result.length === 0) {
+            return res.json({ error: "Patient not found" });
+        }
+        return res.json(result[0]); // Assuming you fetch only one patient
+    });
+});
+
+
 
 // admin approving
 
